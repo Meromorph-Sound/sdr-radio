@@ -1,0 +1,43 @@
+id: meromorph_xmlrpc_introspective_server
+label: xmlrpc_introspective_server
+category: '[meromorph]'
+
+templates:
+  imports: import meromorph
+  make: meromorph.xmlrpc_introspective_server(${host},${port})
+
+parameters:
+- id: host
+  label: Host
+  dtype: string
+  default: localhost
+- id: port
+  label: Port
+  dtype: int
+  default: '8000'
+
+templates:
+  imports: |-
+    try:
+        from xmlrpc.server import SimpleXMLRPCServer
+    except ImportError:
+        from SimpleXMLRPCServer import SimpleXMLRPCServer
+    import threading
+  make: |-
+    SimpleXMLRPCServer((${host}, ${port}), allow_none=True)
+        self.${id}.register_introspection_functions()
+        self.${id}.register_instance(self)
+        self.${id}_thread = threading.Thread(target=self.${id}.serve_forever)
+        self.${id}_thread.daemon = True
+        self.${id}_thread.start()
+
+documentation: |-
+    This block will start an XMLRPC server. The server provides access to the run, start, stop, wait functions of the flow graph. The server also provides access to the variable callbacks in the flow graph. Ex: If the variable is called freq, the function provided by the server will be called set_freq(new_freq).  It supports XML introspection, so can be asked to list methods, etc.
+
+    Example client in python:
+
+    import xmlrpclib
+    s = xmlrpclib.Server('http://localhost:8080')
+    s.set_freq(5000)
+    
+file_format: 1
