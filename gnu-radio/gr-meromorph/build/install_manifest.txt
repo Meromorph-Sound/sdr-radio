@@ -1,9 +1,0 @@
-/usr/local/lib/cmake/meromorph/meromorphConfig.cmake
-/usr/local/include/meromorph/api.h
-/usr/local/lib/python3/dist-packages/meromorph/__init__.py
-/usr/local/lib/python3/dist-packages/meromorph/xmlrpc_introspective_server.py
-/usr/local/lib/python3/dist-packages/meromorph/__init__.pyc
-/usr/local/lib/python3/dist-packages/meromorph/xmlrpc_introspective_server.pyc
-/usr/local/lib/python3/dist-packages/meromorph/__init__.pyo
-/usr/local/lib/python3/dist-packages/meromorph/xmlrpc_introspective_server.pyo
-/usr/local/share/gnuradio/grc/blocks/meromorph_xmlrpc_introspective_server.block.yml
